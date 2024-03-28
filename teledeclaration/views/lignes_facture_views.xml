@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lignes_facture_view_tree" model="ir.ui.view">
+        <field name="name">lignes.facture.tree</field>
+        <field name="model">lignes.facture</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="num_ordre"/>
+                <field name="num_facture"/>
+                <field name="date_facture"/>
+                <field name="designation"/>
+                <field name="nom_fournisseur"/>
+                <field name="id_fiscal_fournisseur"/>
+                <field name="ice"/>
+                <field name="montant_ht"/>
+                <field name="taux"/>
+                <field name="montant_tva"/>
+                <field name="montant_ttc"/>
+                <field name="mode_paiement"/>
+                <field name="date_paiement"/>
+                <field name="declarer"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="lignes_facture_action" model="ir.actions.act_window">
+        <field name="name">Lignes de Facture</field>
+        <field name="res_model">lignes.facture</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

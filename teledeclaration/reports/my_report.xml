@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="edi_tva_report" model="ir.actions.report">
+        <field name="name"> </field>
+        <field name="model">declarations.tva</field>
+        <field name="report_type">qweb-xml</field>
+        <field name="report_name">teledeclaration.edi_tva_report_view</field>
+        <field name="report_file">teledeclaration.edi_tva_report_view</field>
+        <field name="print_report_name">object.date.strftime("%B %Y")</field>
+        <field name="xml_declaration">true</field>
+    </record>
+
+    <template id="edi_tva_report_view">
+        <DeclarationReleveDeduction t-foreach="docs" t-as="dec">
+            <identifiantFiscal t-field="dec.id_fiscal"/>
+            <annee t-field="dec.annee"/>
+            <periode t-field="dec.periode"/>
+            <regime t-esc="dec.regime"/>
+            <releveDeductions t-foreach="dec.lignes_facture_ids" t-as="ligne">
+                <rd>
+                    <ord t-field="ligne.num_ordre"/>
+                    <num t-field="ligne.num_facture"/>
+                    <des t-field="ligne.designation"/>
+                    <mht t-field="ligne.montant_ht"/>
+                    <tva t-field="ligne.montant_tva"/>
+                    <ttc t-field="ligne.montant_ttc"/>
+                    <refF>
+                        <if t-field="ligne.id_fiscal_fournisseur"/>
+                        <nom t-field="ligne.nom_fournisseur"/>
+                        <ice t-field="ligne.ice"/>
+                    </refF>
+                    <tx t-field="ligne.taux"/>
+                    <mp>
+                        <id t-esc="ligne.mode_paiement"/>
+                    </mp>
+                    <dpai t-field="ligne.num_facture"/>
+                    <dfac t-field="ligne.date_facture"/>
+                </rd>
+            </releveDeductions>
+        </DeclarationReleveDeduction>
+    </template>
+</odoo>

@@ -1,0 +1,21 @@
+{
+    'name': "Teledeclaration",
+    'version': '1.0.0',
+    'category': 'Teledeclaration',
+    'author': 'Doosys',
+    'sequence': -100,
+    'summary': 'Teledeclaration',
+    'description': """Teledeclaration""",
+    'depends': ['base', 'report_xml'],
+    'data': [
+        'security\ir.model.access.csv',
+        'reports\my_report.xml',
+        'views\lignes_facture_views.xml',
+        'views\declarations_tva_views.xml',
+        r'views\teledeclaration_menus.xml',
+    ],
+    'demo': [],
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

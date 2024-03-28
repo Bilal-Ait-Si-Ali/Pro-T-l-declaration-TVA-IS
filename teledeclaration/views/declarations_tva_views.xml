@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="declarations_tva_view_tree" model="ir.ui.view">
+        <field name="name">declarations.tva.tree</field>
+        <field name="model">declarations.tva</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="id_fiscal"/>
+                <field name="regime"/>
+                <field name="periode"/>
+                <field name="date"/>
+                <field name="annee"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="declarations_tva_view_form" model="ir.ui.view">
+        <field name="name">declarations.tva.form</field>
+        <field name="model">declarations.tva</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference"/>
+                            <field name="id_fiscal"/>
+                            <field name="regime"/>
+                            <field name="periode"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="annee"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <button string="filter" type="object" name="filter" class="oe_highlight"/>
+                    <field name="lignes_facture_ids" nolabel="1" readonly="1"/>
+                    <group>
+                        <group>
+                            <label for="date" string="Fichier EDI TVA"/>
+                            <button type="action" name="%(teledeclaration.edi_tva_report)d" class="fa fa-download">
+                                <div style="margin-left: 5px; color: #71639e; font-family: Arial;">
+                                    <field readonly="1" force_save="1" name="file_name"/>
+                                </div>
+                            </button>
+                        </group>
+                        <div>
+                            <button string="Generer EDI" class="oe_highlight"/>
+                            <span style="margin: 5px;">or</span>
+                            <button string="Cancel"/>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="declarations_tva_action" model="ir.actions.act_window">
+        <field name="name">Générer XML</field>
+        <field name="res_model">declarations.tva</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

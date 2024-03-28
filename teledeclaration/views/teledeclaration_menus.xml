@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="teledeclaration_root" name="Teledeclaration" sequence="1">
+        <menuitem id="teledeclaration_tva_menu" name="Teledeclaration TVA" sequence="1">
+            <menuitem id="lignes_facture_menu_action" action="lignes_facture_action" sequence="1"/>
+            <menuitem id="declarations_tva_menu_action" action="declarations_tva_action" name="Declarations TVA"
+                      sequence="2"/>
+        </menuitem>
+    </menuitem>
+</odoo>
